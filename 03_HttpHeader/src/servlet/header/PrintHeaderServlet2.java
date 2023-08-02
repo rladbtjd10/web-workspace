@@ -20,6 +20,10 @@ public class PrintHeaderServlet2 extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		System.out.println("doGet~~~~~");
+		
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=utf-8");
 		
 		PrintWriter out = response.getWriter();
 		out.println("<h2>여기는 doGet입니다...</h2>");
