@@ -37,7 +37,14 @@ public class SearchServlet extends HttpServlet {
 			request.setAttribute("vo", vo);
 			
 			// 4. 네비게이션 -> view.jsp
-			request.getRequestDispatcher("view.jsp").forward(request, response);
+//			if(vo!=null) {
+//				request.getRequestDispatcher("view.jsp").forward(request, response);
+//			} else {
+//				request.getRequestDispatcher("fail.jsp").forward(request, response);
+//			} // 이거 포함까지가 시험범위(강사님이 금요일 마지막시간에 알려준거)--1
+			
+			
+			request.getRequestDispatcher("view.jsp").forward(request, response);//수업때 나간거--2
 	}
 
 	
