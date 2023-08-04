@@ -29,7 +29,7 @@
 		<h2>Register Cafe Member</h2>
 		
 		<form action="entrance" method="post"
-		onsubmit="return checkData()" name="frm">
+		onsubmit="return ageData()" name="frm">
 			<div class="mb-3">
 				<label for="name" class="form-label">이름</label>
 				<input type="text" class="form-control" id="name" name="name" required>
@@ -47,25 +47,42 @@
 	</div>
 
 	<script>
-		
-			// 나이를 숫자로 입력하지 않았을 때
-			// alert로 숫자를 입력하라고 메시지 띄우고
-			// return false
-			const age = document.querySelector("#age");
-
-			function ageData() {
-				const regExp = /^[0-9]+$/;
-				return regExp.test(age.value);
-			}
-
-			function checkData() {
-			if(!ageData()){
-				alert("숫자를 입력하시오");
+		console.log(document.frm);
+		function ageData() {
+			//const regExp = /^[0-9]+$/;
+			const age = document.frm.age.value;
+			
+			if(isNaN(age)) {
+				alert('숫자로 입력해주세요!');
 				return false;
 			} else {
 				return true;
 			}
+			//if(regExp.test(document.frm.age.value)){
+			//	return true;
+			//}else {
+			//	alert('숫자로 입력해주세요!');
+			//	return false;
+			//}
 		}
+			// 나이를 숫자로 입력하지 않았을 때
+			// alert로 숫자를 입력하라고 메시지 띄우고
+			// return false
+			
+			//<내가 한 방법>
+			//const age = document.querySelector("#age");
+            //function ageData() {
+				//const regExp = /^[0-9]+$/;
+				//return regExp.test(age.value);
+			//}
+			//function checkData() { ==>return submit=checkData
+			//if(!ageData()){
+				//alert("숫자를 입력하시오");
+				//return false;
+			//} else {
+				//return true;
+			//}
+		    //}
 
 	
 	</script>
