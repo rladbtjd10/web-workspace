@@ -66,7 +66,7 @@ public class EntranceServlet extends HttpServlet {
 //		RequestDispatcher rdp = request.getRequestDispatcher("viewMember.jsp");
 //		rdp.forward(request, response); // 이때 페이지로 이동 ----방법1
 //		request.getRequestDispatcher("view").forward(request, response);
-		response.sendRedirect("view");
+		response.sendRedirect("view"); // 그냥 받아서 화면에 띄울때(뭔가를 수행할게 없을때) 즉, 이름나이주소쓰고 입장하기 누르면 그다음 화면인 전체카페명단리스트가 뜨는것 처럼
 		
 //		PrintWriter out = response.getWriter();
 //	    out.println("<a href='viewMember.jsp'>결과 확인하러 가기</a>");

@@ -44,7 +44,7 @@ public class SearchServlet extends HttpServlet {
 //			} // 이거 포함까지가 시험범위(강사님이 금요일 마지막시간에 알려준거)--1
 			
 			
-			request.getRequestDispatcher("view.jsp").forward(request, response);//수업때 나간거--2
+			request.getRequestDispatcher("view.jsp").forward(request, response);//수업때 나간거--2 //뭔가를 요청해서 가져와야될때
 	}
 
 	
