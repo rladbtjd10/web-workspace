@@ -15,13 +15,6 @@ import servlet.model.MemberVO;
 public class SearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-  
-    public SearchServlet() {
-        super();
-        
-    }
-
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 1. 폼 데이터 받아오기
 		String name = request.getParameter("name");

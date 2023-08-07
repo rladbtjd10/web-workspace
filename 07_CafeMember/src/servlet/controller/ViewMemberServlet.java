@@ -16,11 +16,6 @@ import servlet.model.MemberVO;
 public class ViewMemberServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public ViewMemberServlet() {
-        super();
-    }
-
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 1. DAO 리턴 받기
 		MemberDAO dao = new MemberDAO();

@@ -86,12 +86,6 @@ public class MemberDAO implements MemberDAOTemplate{
 		ResultSet rs = ps.executeQuery();
 		while (rs.next()) {
 			memberList.add(new MemberVO(rs.getString("name"),rs.getInt("age"), rs.getString("addr")));
-			
-//			String name = rs.getString("NAME");
-//			int age = rs.getInt("AGE");
-//			String addr = rs.getString("ADDR");
-//			MemberVO member = new MemberVO(name, age, addr);
-//			memberList.add(member);
 		}
 
 		closeAll(rs, ps, conn);
@@ -113,10 +107,6 @@ public class MemberDAO implements MemberDAOTemplate{
 		ResultSet rs = ps.executeQuery();
 		if (rs.next()) {
 			vo = new MemberVO(rs.getString("name"), rs.getInt("age"), rs.getString("addr"));
-			
-//			int age = rs.getInt("AGE");
-//			String addr = rs.getString("ADDR");
-//			member = new MemberVO(name, age, addr);
 		}
 
 		closeAll(rs, ps, conn);
