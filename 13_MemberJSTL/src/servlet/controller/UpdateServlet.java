@@ -1,6 +1,8 @@
 package servlet.controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,25 +21,34 @@ public class UpdateServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 1. 폼값 가져온다.
 		String id = request.getParameter("id");
-//		String password = request.getParameter("password");
+		String password = request.getParameter("password");
 		String name = request.getParameter("name");
 		String address = request.getParameter("address");
 		
-		MemberDTO updatedMember = new MemberDTO(id, name, address);
+		// 2. 객체 생성
+		MemberDTO dto = new MemberDTO();
+		dto.setId(id);
+		dto.setPassword(password);
+		dto.setName(name);
+		dto.setAddress(address);
 
-        MemberDAO memberDAO = new MemberDAO();
-        boolean updateResult = memberDAO.updateMember(updatedMember);
-
-        if (updateResult) {
-            HttpSession session = request.getSession();
-            session.setAttribute("dto", updatedMember);
-            
-            response.sendRedirect("views/update_result.jsp");
-        } else {
-            response.getWriter().println("회원 정보 업데이트에 실패하였습니다.");
-        }
+		try {
+			//3. DAO
+			MemberDAO.getInstance().updateMember(dto);
+			
+			//4. 데이터 바인딩 - session
+			HttpSession session = request.getSession();
+			if(session.getAttribute("dto")!=null) {
+				session.setAttribute("dto", dto);
+			} 
+			
+			//5.네비게이션
+			request.getRequestDispatcher("views/update_result.jsp").forward(request, response);
+			
+		} catch (SQLException e) {}
 		
-	}
+		} 
+        
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
