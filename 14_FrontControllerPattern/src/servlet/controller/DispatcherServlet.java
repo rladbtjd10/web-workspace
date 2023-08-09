@@ -30,12 +30,15 @@ public class DispatcherServlet extends HttpServlet {
 				path = register(request, response);
 			} else if (command.equals("login")) {
 				path = login(request, response);
+			} else if (command.equals("search")) {
+				path = search(request, response);
 			} else if (command.equals("allShow")) {
 				path = allShow(request, response);
-			} else if (command.equals("find")) {
-				path = find(request, response);
+			} else if (command.equals("logout")) {
+				path = logout(request, response);
 			} else if (command.equals("update")) {
-				path = update(request, response);}
+				path = update(request, response);
+			}
 		} catch (SQLException e) {}
 		
 		// 네비게이션
@@ -71,23 +74,16 @@ public class DispatcherServlet extends HttpServlet {
 		MemberVO vo = MemberDAO.getInstance().login(id, password);
 		
 		HttpSession session = request.getSession();
-		session.setAttribute("vo", vo);
 		
+		
+		if(vo!=null) {
+			session.setAttribute("vo", vo);
+		}
 		return "views/login_result.jsp";
 		
 	}
 	
-	protected String allShow(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
-		ArrayList<MemberVO> list = new ArrayList<>();
-		list = MemberDAO.getInstance().showAllMember();
-		request.setAttribute("list", list);
-		
-		return "views/allShow.jsp";
-	}
-	
-	
-	
-	protected String find(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+	protected String search(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
 		String id = request.getParameter("id");
 		
 		MemberVO vo = MemberDAO.getInstance().findByIdMember(id);
@@ -99,6 +95,25 @@ public class DispatcherServlet extends HttpServlet {
 		return "views/find_fail.jsp";
 	}
 	
+	protected String allShow(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+		ArrayList<MemberVO> list = MemberDAO.getInstance().showAllMember();
+		request.setAttribute("list", list);
+		
+		return "views/allShow.jsp";
+	}
+	
+	protected String logout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+		
+		HttpSession session = request.getSession();
+
+		if(session.getAttribute("vo") != null) {
+			session.invalidate();
+			return "views/logout.jsp";
+		}
+
+		return "index.jsp";
+	}
+	
 	protected String update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
@@ -106,16 +121,16 @@ public class DispatcherServlet extends HttpServlet {
 		String address = request.getParameter("address");
 		
 		MemberVO vo = new MemberVO(id, password, name, address);
-		
-		MemberDAO.getInstance().registerMember(vo);
+	
+		MemberDAO.getInstance().updateMember(vo);
 		
 		HttpSession session = request.getSession();
 		if(session.getAttribute("vo")!=null) {
 			session.setAttribute("vo", vo);
+			return "views/update_result.jsp";
 		} 
 		
-		return "views/update_result.jsp";
-		
+		return "index.jsp";
 	}
 
 }

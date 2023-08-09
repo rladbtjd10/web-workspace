@@ -11,7 +11,7 @@
 
 	<h2>회원 정보 수정</h2>
 	
-	<form action="/UpdateServlet" method="post">
+	<form action="/front.do" method="post">
 		<input type="hidden" name="command" value="update">
 		ID : <input type="text" name="id" value="${vo.id}" readonly><br>
 		PASSWORD : <input type="password" name="password" value="${vo.password}" ><br>

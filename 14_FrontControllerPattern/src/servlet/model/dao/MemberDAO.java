@@ -167,6 +167,8 @@ public class MemberDAO implements MemberDAOTemplate {
 	public void updateMember(MemberVO vo) throws SQLException {
 		Connection conn = getConnection();
 		
+		System.out.println("VO :: "+ vo);
+			
 		String query = "UPDATE member SET password=?, name=?, address=? WHERE id=?";
 		PreparedStatement ps = conn.prepareStatement(query);
 		ps.setString(1, vo.getPassword());
@@ -174,7 +176,7 @@ public class MemberDAO implements MemberDAOTemplate {
 		ps.setString(3, vo.getAddress());
 		ps.setString(4, vo.getId());
 		
-		ps.executeQuery();
+		System.out.println("UPDATE :: " + ps.executeQuery());
 		closeAll(ps, conn);
 		
 	}

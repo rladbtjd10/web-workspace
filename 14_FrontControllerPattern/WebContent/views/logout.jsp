@@ -8,23 +8,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<body>
 
-<%
-	MemberVO vo = (MemberVO) session.getAttribute("vo");
-	if (vo != null) {
-		session.invalidate();
-%>
-<body onload="return logout()">
-	
 	<script>
-		function logout() {
-			alert('Logout!');
-			location.href="../index.jsp";
-		}
+		alert('Logout!');
+		location.href = "/index.jsp";
 	</script>
 
-	
 </body>
-<% } %>
-
 </html>

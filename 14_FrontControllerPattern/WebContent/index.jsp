@@ -43,7 +43,7 @@
 		<%--
 			전체회원보기 : views/allShow.jsp에 전체 리스트 출력
 		 --%>
-		<li><a href="views/logout.jsp">로그아웃</a></li>
+		<li><a href="/front.do?command=logout">로그아웃</a></li>
 		<%-- 로그아웃 : 로그아웃하고 index.jsp로 오면 됨 --%>
 		
 		<li><a href="views/update.jsp">회원 정보 수정</a></li>
