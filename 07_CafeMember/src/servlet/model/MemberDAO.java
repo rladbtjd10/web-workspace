@@ -15,12 +15,12 @@ public class MemberDAO implements MemberDAOTemplate{
 		
 		MemberDAO dao = new MemberDAO();
 		try {
-//			dao.insertMember(new MemberVO("마마마", 3, "바바바"));
+			dao.insertMember(new MemberVO("마마마", 3, "바바바"));
 //			for(MemberVO vo : dao.showAllMember()) {
 //				System.out.println(vo);
 //			}
-			System.out.println(dao.findByNameMember("가가가"));
-		} catch (SQLException e) {}
+//			System.out.println(dao.findByNameMember("가가가"));
+		} catch (SQLException e) {System.out.print("false");}
 	
 	}
 	
@@ -62,7 +62,7 @@ public class MemberDAO implements MemberDAOTemplate{
 		// 3. Statement 객체 생성
 		String query = "INSERT INTO MEMBER(NAME, AGE, ADDR) VALUES(?, ?, ?)";
 		PreparedStatement ps = conn.prepareStatement(query);
-					
+	
 		ps.setString(1, vo.getName());
 		ps.setInt(2, vo.getAge());
 		ps.setString(3, vo.getAddr());

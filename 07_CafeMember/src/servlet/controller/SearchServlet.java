@@ -24,20 +24,23 @@ public class SearchServlet extends HttpServlet {
 		MemberVO vo = null;
 		try {
 			vo = dao.findByNameMember(name);
-		} catch (SQLException e) {}
 			
 			// 3. 멤버 정보 1개 바인딩
-			request.setAttribute("vo", vo);
+						request.setAttribute("vo", vo);
+						
+						System.out.println("vo::" + vo);
+						// 4. 네비게이션 -> view.jsp
+//						if(vo!=null) {
+//							request.getRequestDispatcher("view.jsp").forward(request, response);
+//						} else {
+//							request.getRequestDispatcher("fail.jsp").forward(request, response);
+//						} // 이거 포함까지가 시험범위(강사님이 금요일 마지막시간에 알려준거)--1
+						
+						
+						request.getRequestDispatcher("view.jsp").forward(request, response);//수업때 나간거--2 //뭔가를 요청해서 가져와야될때
+		} catch (SQLException e) {}
 			
-			// 4. 네비게이션 -> view.jsp
-//			if(vo!=null) {
-//				request.getRequestDispatcher("view.jsp").forward(request, response);
-//			} else {
-//				request.getRequestDispatcher("fail.jsp").forward(request, response);
-//			} // 이거 포함까지가 시험범위(강사님이 금요일 마지막시간에 알려준거)--1
 			
-			
-			request.getRequestDispatcher("view.jsp").forward(request, response);//수업때 나간거--2 //뭔가를 요청해서 가져와야될때
 	}
 
 	

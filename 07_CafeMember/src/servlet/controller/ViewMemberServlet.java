@@ -22,13 +22,17 @@ public class ViewMemberServlet extends HttpServlet {
 		ArrayList<MemberVO> list = null;
 		try {
 			list = dao.showAllMember();
+			
+			System.out.println(list);
+			
+			// 2. 바인딩
+			request.setAttribute("list", list);
+
+			// 3. 네비게이션 --> viewMember.jsp
+			request.getRequestDispatcher("viewMember.jsp").forward(request, response);
 		} catch (SQLException e) {}
 
-		// 2. 바인딩
-		request.setAttribute("list", list);
-
-		// 3. 네비게이션 --> viewMember.jsp
-		request.getRequestDispatcher("viewMember.jsp").forward(request, response);
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

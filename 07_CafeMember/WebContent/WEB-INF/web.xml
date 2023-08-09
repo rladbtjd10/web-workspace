@@ -17,7 +17,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>EntranceServlet</servlet-name>
-    <url-pattern>/entrance</url-pattern>
+    <url-pattern>/EntranceServlet</url-pattern>
   </servlet-mapping>
   <filter>
     <display-name>EncodingFilter</display-name>
@@ -49,7 +49,17 @@
     <url-pattern>/search</url-pattern>
   </servlet-mapping>
   <error-page>
-  	<error-code>404</error-code>
-  	<location>/404error.html</location>
+    <error-code>404</error-code>
+    <location>/404error.html</location>
   </error-page>
+  <servlet>
+    <description></description>
+    <display-name>EntranceServlet2</display-name>
+    <servlet-name>EntranceServlet2</servlet-name>
+    <servlet-class>servlet.controller.EntranceServlet2</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EntranceServlet2</servlet-name>
+    <url-pattern>/entrance</url-pattern>
+  </servlet-mapping>
 </web-app>
