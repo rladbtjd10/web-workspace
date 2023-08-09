@@ -23,15 +23,18 @@ public class MemberDAO implements MemberDAOTemplate {
 	 * 주의할 점은 싱글톤은 전역 상태를 가질 수 있으므로 오남용하면 애플리케이션의 복잡성이 증가
 	 */
 	private static MemberDAO dao = new MemberDAO();
-	private MemberDAO() {
+	
+	public MemberDAO() {
 		try {
+			// 1. 드라이버 로딩
 			Class.forName(ServerInfo.DRIVER_NAME);
-		} catch (ClassNotFoundException e) {}
+		} catch (ClassNotFoundException e) {
+		}
 	}
+	
 	public static MemberDAO getInstance() {
 		return dao;
 	}
-	
 	
 	public static void main(String[] args) {
 		MemberDAO dao = new MemberDAO(); 
@@ -52,13 +55,6 @@ public class MemberDAO implements MemberDAOTemplate {
 		} catch (SQLException e) {}
 	}
 
-	public MemberDAO() {
-		try {
-			// 1. 드라이버 로딩
-			Class.forName(ServerInfo.DRIVER_NAME);
-		} catch (ClassNotFoundException e) {
-		}
-	}
 
 	@Override
 	public Connection getConnection() throws SQLException {
@@ -167,6 +163,21 @@ public class MemberDAO implements MemberDAOTemplate {
 		closeAll(rs, ps, conn);
 
 		return list;
+	}
+	
+	public void updateMember(MemberDTO dto) throws SQLException {
+		Connection conn = getConnection();
+		
+		String query = "UPDATE member SET password=?, name=?, address=? WHERE id=?";
+		PreparedStatement ps = conn.prepareStatement(query);
+		ps.setString(1, dto.getPassword());
+		ps.setString(2, dto.getName());
+		ps.setString(3, dto.getAddress());
+		ps.setString(4, dto.getId());
+		
+		ps.executeQuery();
+		closeAll(ps, conn);
+		
 	}
 
 }

@@ -20,14 +20,14 @@
 			<th>주소</th>
 		</tr>
 		
-		<jsp:useBean id="list" class="java.util.ArrayList" scope="request" />
-		<c:forEach var="item" items="${list}">
+		<c:forEach items="${list}" var="item">
 			<tr>
-				<td><c:out value="${item.id}" /></td>
-				<td><c:out value="${item.name}" /></td>
-				<td><c:out value="${item.address}" /></td>
+				<td>${item.id}</td>
+				<td>${item.name}</td>
+				<td>${item.address}</td>
 			</tr>
 		</c:forEach>
+	</table>
 		<%-- 
 		<%
 			ArrayList<MemberDTO> list = (ArrayList<MemberDTO>) request.getAttribute("list");
@@ -40,6 +40,6 @@
 			</tr>	
 			<% } %>
 	     --%>
-	</table>
+	
 </body>
 </html>

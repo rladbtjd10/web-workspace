@@ -9,19 +9,6 @@
 <title>Insert title here</title>
 </head>
 
-	<c:choose>
-		<c:when test="${sessionScope.dto != null}">
-			<script>
-				function logout() {
-					alert('Logout!');
-					location.href="../index.jsp";
-				}
-				logout();
-			</script>
-		</c:when>
-	</c:choose>
-
-<%-- 
 <%
 	MemberDTO dto = (MemberDTO) session.getAttribute("dto");
 	if (dto != null) {
@@ -35,9 +22,9 @@
 			location.href="../index.jsp";
 		}
 	</script>
---%>
+
 	
 </body>
-<%--<% } --%>
+<% } %>
 
 </html>

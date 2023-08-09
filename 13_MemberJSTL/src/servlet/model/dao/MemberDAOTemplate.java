@@ -20,4 +20,5 @@ public interface MemberDAOTemplate {
 	MemberDTO login(String id, String password) throws SQLException;
 	MemberDTO findByIdMember(String id) throws SQLException;
 	ArrayList<MemberDTO> showAllMember() throws SQLException;
+	
 }
