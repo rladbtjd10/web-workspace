@@ -17,7 +17,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>EntranceServlet</servlet-name>
-    <url-pattern>/EntranceServlet</url-pattern>
+    <url-pattern>/entrance</url-pattern>
   </servlet-mapping>
   <filter>
     <display-name>EncodingFilter</display-name>
@@ -60,6 +60,6 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>EntranceServlet2</servlet-name>
-    <url-pattern>/entrance</url-pattern>
+    <url-pattern>/EntranceServlet2</url-pattern>
   </servlet-mapping>
 </web-app>

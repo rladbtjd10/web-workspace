@@ -21,15 +21,14 @@ public class MemberDAO implements MemberDAOTemplate {
 	 * 주의할 점은 싱글톤은 전역 상태를 가질 수 있으므로 오남용하면 애플리케이션의 복잡성이 증가
 	 */
 	private static MemberDAO dao = new MemberDAO();
-	private MemberDAO() {
-		try {
-			Class.forName(ServerInfo.DRIVER_NAME);
-		} catch (ClassNotFoundException e) {}
-	}
-	public static MemberDAO getInstance() {
-		return dao;
-	}
 	
+	public MemberDAO() {
+		try {
+			// 1. 드라이버 로딩
+			Class.forName(ServerInfo.DRIVER_NAME);
+		} catch (ClassNotFoundException e) {
+		}
+	}
 	
 	public static void main(String[] args) {
 		MemberDAO dao = new MemberDAO(); 
@@ -50,13 +49,7 @@ public class MemberDAO implements MemberDAOTemplate {
 		} catch (SQLException e) {}
 	}
 
-	public MemberDAO() {
-		try {
-			// 1. 드라이버 로딩
-			Class.forName(ServerInfo.DRIVER_NAME);
-		} catch (ClassNotFoundException e) {
-		}
-	}
+	
 
 	@Override
 	public Connection getConnection() throws SQLException {

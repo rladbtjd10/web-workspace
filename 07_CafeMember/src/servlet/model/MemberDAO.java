@@ -69,6 +69,7 @@ public class MemberDAO implements MemberDAOTemplate{
 					
 		// 4. 쿼리문 실행
 		System.out.println(ps.executeUpdate()+ "명 가입!");
+		// INSERT, UPDATE, DELETE 등의 데이터베이스 변경 작업을 실행할 때 사용됩니다. 이 메서드는 쿼리 실행 후 영향을 받은 레코드의 수를 반환합니다.
 		
 		closeAll(ps, conn);
 	}
