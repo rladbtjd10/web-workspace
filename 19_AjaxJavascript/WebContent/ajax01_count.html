@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>Show Count</h2>
+	<input type="button" value="count 증가" onclick="startRequest()">
+	<div id ="resultView"></div>
+	
+	<!-- 비동기적 방식 -->
+	<script>
+		let xhr; // XML Http Request
+		function startRequest() { // 요청에 해당하는 로직을 담는 함수 
+			xhr = new XMLHttpRequest();
+			//alert(xhr.readyState); // 0 //준비전상태
+			
+			xhr.onreadystatechange = callback; //상태를 변화하는걸 감지하는 애 보통 callback을 담음 
+			//alert(xhr.readyState); // 0 //준비전상태 - 여기까진 콜백이 아직 연결 안됨
+			
+			xhr.open("get", "CountServlet?id=ajax&pass=1212");  //Ajax(Asynchronous JavaScript and XML)는 웹 페이지에서 비동기적으로 데이터를 교환하고 업데이트하기 위한 기술의 집합을 나타냅니다.Ajax를 사용하면 페이지 전체를 다시 로드하지 않고도 서버와 데이터를 주고받을 수 있습니다. 
+			//alert(xhr.readyState); // 1
+			
+			xhr.send(null);  // GET 방식이어서 null
+			// send일때 서버로 날라간다.. 즉 실질적인 요청이 이때 들어간다.
+			//alert(xhr.readyState); // 1
+		}
+	function callback() { // 응답에 해당하는 로직을 담는 함수 
+		//alert("callback :: " + xhr.readyState); // 1 -> 4
+		if(xhr.readyState === 4) {
+			//console.log(xhr.status); //200 ->준비도 됐고 다 완료되서 잘 돌아가는 상태 (정상적인 상태)- 404는 에러났을때만 뜨는게 아니라 정상적으로 돌아갔을때도 뜸 
+			if(xhr.status == 200) {
+				const text = xhr.responseText;
+				document.querySelector("#resultView").innerHTML = "<h4>" + text + "</h4>"
+			}
+			 
+		}
+	}
+	</script>
+</body>
+</html>

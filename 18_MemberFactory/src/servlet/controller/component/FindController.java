@@ -17,7 +17,7 @@ public class FindController implements Controller{
 		
 		MemberVO vo = MemberDAO.getInstance().findByIdMember(id);
 		if(vo!=null) {
-			request.setAttribute("vo", vo);
+			request.setAttribute("vo", vo); // request 일회성!!
 			path = "views/find_ok.jsp";
 		} 
 		

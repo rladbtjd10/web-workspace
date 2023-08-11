@@ -17,19 +17,17 @@ public class UpdateController implements Controller {
 		String password = request.getParameter("password");
 		String name = request.getParameter("name");
 		String address = request.getParameter("address");
-		String path = "index.jsp";
+		String path = "views/update.jsp";
 		
 		MemberVO vo  = new MemberVO(id, password, name, address);
-		
 		MemberDAO.getInstance().updateMember(vo);
 		
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession(); //수정했으니깐 새로운 정보를 세션해줘야되서 하는거 
 		if(session.getAttribute("vo")!=null) {
 			session.setAttribute("vo", vo);
-			path = "views/update_result.jsp";
 		} 
 		
-		return new ModelAndView(path);
+		return new ModelAndView("views/update_result.jsp");
 	}
 
 }

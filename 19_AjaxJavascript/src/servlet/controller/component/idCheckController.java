@@ -1,5 +1,7 @@
 package servlet.controller.component;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -8,21 +10,22 @@ import servlet.controller.ModelAndView;
 import servlet.model.dao.MemberDAO;
 import servlet.model.vo.MemberVO;
 
-public class registerController implements Controller {
+public class idCheckController implements Controller {
 
 	@Override
 	public ModelAndView handle(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String id = request.getParameter("id");
-		String password = request.getParameter("password");
-		String name = request.getParameter("name");
-		String address = request.getParameter("address");
-	
 		
-		MemberVO vo = new MemberVO(id, password, name, address);
-		MemberDAO.getInstance().registerMember(vo);
+		PrintWriter out = response.getWriter();
 		
-		return new ModelAndView("index.jsp", true);
-	}
-	
-	
+		MemberVO vo = MemberDAO.getInstance().findByIdMember(id);
+		
+		if(vo!=null) {
+			out.print("ID 사용 불가!");
+		} else {
+			out.print("ID 사용 가능!!");
+		}
+		
+		return new ModelAndView();
+}
 }

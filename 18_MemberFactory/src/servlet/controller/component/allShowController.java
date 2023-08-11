@@ -14,11 +14,10 @@ public class allShowController implements Controller{
 
 	@Override
 	public ModelAndView handle(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		ArrayList<MemberVO> list = MemberDAO.getInstance().showAllMember();
+		ArrayList<MemberVO> list = MemberDAO.getInstance().showAllMember(); // ArrayList<MemberVO> list 부분 MemberDAO의 리턴값 생각하기
 		request.setAttribute("list", list);
-		String path = "view/allShow.jsp";
 		
-		return new ModelAndView(path);
+		return new ModelAndView("views/allShow.jsp"); // forward방식으로!
 	}
 
 }

@@ -38,16 +38,16 @@
 			 -> FindMemberServlet -> 검색 성공하면 views/find_ok.jsp (정보 출력)
 			 					  -> 실패하면     views/find_fail.jsp ("실패하였습니다" 출력)
 		 --%>
-		<li><a href="/allShow.do">전체회원보기</a></li>
+		<li><a href="allShow.do">전체회원보기</a></li>
 		<%--
 			전체회원보기 : views/allShow.jsp에 전체 리스트 출력
 		 --%>
-		<li><a href="/logout.do">로그아웃</a></li>
+		<li><a href="logout.do">로그아웃</a></li>
 		<%-- 로그아웃 : 로그아웃하고 index.jsp로 오면 됨 --%>
 		
-		<li><a href="update.do">회원 정보 수정</a></li>
+		<li><a href="views/update.jsp">회원 정보 수정</a></li>
 		<%-- 회원정보수정 : 로그인한 정보가 기재된 상태로 시작
-						ID 값은 변경불가능하게 처리 
+						ID 값은 변경불가능하게 처리
 			-> UpdateServlet / post 방식
 				-> DAO : updateMember 메소드 
 			-> update_result.jsp : ...님의 정보를 수정했다. + a링크로 index.jsp로 			
