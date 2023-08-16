@@ -28,16 +28,31 @@
 	<script>
 		let xhr;
 		function startRequest() { //서버 요청!
-			const id = document.querySelector("#id");
 			xhr = new XMLHttpRequest();
 			xhr.onreadystatechange = callback;
-			xhr.open("get", "idCheck.do?id=" + encodeURI(encodeURIComponent(id.value))); // 전에 index에 a링크로 주는 방식으로 해줘야됨 
-			xhr.send(null);
+			//const id = document.querySelector("#id");
+			//xhr.open("get", "idCheck.do?id=" + encodeURI(encodeURIComponent(id.value))); // 전에 index에 a링크로 주는 방식으로 해줘야됨
+			//xhr.send(null);
+			xhr.open("post", "idCheck.do"); //post방식
+			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8"); //post일때는 항상저거 이해하지말고 외우기!
+			xhr.send("id=" + document.querySelector("#id").value);
 		}
 		function callback() { //서버 응답!
 			if(xhr.readyState === 4 && xhr.status === 200) {
-				const text = xhr.responseText;
-				document.querySelector("#idCheckView").innerHTML = "<h3>" + decodeURI(decodeURIComponent(text)) + "</h3>";
+				const flag = xhr.responseText; //방식2(강사님)
+				const idCheckView = document.querySelector("#idCheckView");
+				//if(flag === "true")
+				if(eval(flag) === true) {
+					idCheckView.innerHTML = "<span style='color:red;'>ID 사용 불가!!</span>";
+				} else {
+					idCheckView.innerHTML = "<span style='color:blue;'>ID 사용 가능!!</span>";
+				}
+				
+				
+				
+				
+				//const text = xhr.responseText; --방식1
+				//document.querySelector("#idCheckView").innerHTML = "<h3>" + decodeURI(decodeURIComponent(text)) + "</h3>";
 			}
 		}
 	</script>
