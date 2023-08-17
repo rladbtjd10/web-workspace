@@ -2,7 +2,8 @@ package controller;
 
 public class HandlerMapping {
 	
-	private static HandlerMapping handler = new HandlerMapping();
+	//싱글톤 패턴
+	private static HandlerMapping handler = new HandlerMapping(); 
 	private HandlerMapping() {}
 	public static HandlerMapping getInstance() {
 		return handler;
@@ -13,6 +14,8 @@ public class HandlerMapping {
 		
 		if(command.equals("itemList.do")) {
 			controller = new ItemListController();
+		} else if(command.equals("itemView.do")) {
+			controller = new ItemViewController();
 		}
 		
 		return controller;

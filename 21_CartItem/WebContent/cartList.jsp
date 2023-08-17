@@ -9,5 +9,34 @@
 <body>
 	<h1>장바구니</h1>
 	<a href="itemList.do">쇼핑 계속하기</a>
+	<table border="1">
+		<tr>
+			<td>번호</td>
+			<td>상품이미지</td>
+			<td>상품명</td>
+			<td>상품가격</td>
+			<td>수량</td>
+			<td><button>삭제</button></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>${ }</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td colspan="6"></td>
+		</tr>
+	</table>
 </body>
 </html>
