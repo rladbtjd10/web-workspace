@@ -11,9 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import servlet.model.dao.MemberDAO;
+import servlet.model.service.MemberService;
 import servlet.model.vo.MemberDTO;
 
-@WebServlet("/AllMemberServlet")
+@WebServlet("/member/all")
+//@WebServlet("/AllMemberServlet")
 public class AllMemberServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -22,13 +24,14 @@ public class AllMemberServlet extends HttpServlet {
 		
 //		MemberDAO dao = new MemberDAO();
 		try {
-			ArrayList<MemberDTO> list = new ArrayList<>();
+//			ArrayList<MemberDTO> list = new ArrayList<>();
 //			list = dao.showAllMember();
-			list = MemberDAO.getInstance().showAllMember();
+			ArrayList<MemberDTO> list = new MemberService().showAllMember();
 			request.setAttribute("list", list);
 			
-			System.out.println(list);
-			request.getRequestDispatcher("views/allShow.jsp").forward(request, response);
+			//System.out.println(list);
+			//request.getRequestDispatcher("views/allShow.jsp").forward(request, response);
+			request.getRequestDispatcher("/views/allShow.jsp").forward(request, response);
 		} catch (SQLException e) {
 		}
 		

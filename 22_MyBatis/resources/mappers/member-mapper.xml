@@ -21,20 +21,26 @@
 	</insert>
 	
 	<!-- showAllMember, findByIdMember, login, updateMember -->
+	<select id="showAllMember" resultType="Member">
+		SELECT id, password, name, address
+		FROM member
+	</select>
 	
-	<insert id="showAllMember" parameterType="Member">
-		SELECT * FROM member
-	</insert>
+	<select id="findByIdMember" parameterType="String" resultType="Member">
+		SELECT *
+		FROM member
+		WHERE id=#{id}
+	</select>
 	
-	<insert id="findByIdMember" parameterType="id">
-		SELECT * FROM member WHERE #{id}
-	</insert>
+	<select id="login" parameterType="Member" resultType="Member"> <!-- 하나의값이 아니고 2개이상이여서 member로 resultType받아준거 -->
+		SELECT *
+		FROM member
+		WHERE id=#{id} AND password=#{password}
+	</select>
 	
-	<insert id="login" parameterType="id, password">
-		SELECT* FROM member WHERE #{id} AND #{password}
-	</insert>
-	
-	<insert id="updateMember" parameterType="Member">
-		UPDATE member SET #{password}, #{name}, #{address} WHERE #{id}
-	</insert>
+	<update id="updateMember" parameterType="Member">
+		UPDATE member
+		SET password=#{password}, name=#{name}, address=#{address}
+		WHERE id=#{id}
+	</update>
 </mapper>
