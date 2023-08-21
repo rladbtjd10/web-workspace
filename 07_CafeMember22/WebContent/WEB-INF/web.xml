@@ -38,4 +38,13 @@
     <servlet-name>ViewMemberServlet</servlet-name>
     <url-pattern>/ViewMemberServlet</url-pattern>
   </servlet-mapping>
+  <filter>
+    <display-name>filter</display-name>
+    <filter-name>filter</filter-name>
+    <filter-class>servlet.filter.filter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>filter</filter-name>
+    <url-pattern>/filter</url-pattern>
+  </filter-mapping>
 </web-app>
