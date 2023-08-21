@@ -11,6 +11,7 @@
 	<h1>회원 관리 기능</h1>
 	
 	<ul>
+		<li><a href="views/search.html">회원검색</a></li>
 		<c:choose>
 		   <c:when test="${empty vo}">
 		<%-- 로그인이 되어 있지 않은 경우 --%>
@@ -32,7 +33,7 @@
 		 
 		 <c:otherwise>
 		<%-- 로그인 되었을 때 --%>
-		<li><a href="views/search.html">회원검색</a></li>
+		<!-- <a href="views/search.html">회원검색</a></li> --><li>
 		<%--
 			회원검색 : 검색할 아이디를 입력받아서
 			 -> FindMemberServlet -> 검색 성공하면 views/find_ok.jsp (정보 출력)

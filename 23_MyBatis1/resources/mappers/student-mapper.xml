@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="studentMapper">
+<!-- 
+	resultMap에서 TB_STUDENT, TB_DEPARTMENT
+	id, result - 앞에서 배운 건 여기까지였다면
+	<association property="department" resultMap="departmentMap/>
+	
+	showStudent 
+ -->
+ 	<resultMap type="Student" id="StudentMap">
+ 		<result property="studentNo" column="student_No"/>
+ 		<result property="studentName" column="student_Name"/>
+ 		<result property="studentAddress" column="student_Address"/>
+ 		<association property="department" resultMap="departmentMap/>
+ 	</resultMap>
+ 	
+ 	<resultMap type="Student" id="StudentMap">
+ 		<result property="studentNo" column="studentNo"/>
+ 		<result property="studentName" column="studentName"/>
+ 		<result property="studentAddress" column="studentAddress"/>
+ 		<result property="department" column="department"/>
+ 	</resultMap>
+ 	
+ <select id="showStudent" parameterType="String">
+ 
+ 	<!-- #{word} : 조건 - word가 null인지 아닌지
+ 		WHERE student_no, student_name, student_address,
+ 		 department_name, category 랑 word가 포함되어 있는지
+ 		 이 중 하나만 걸려도 되니깐 OR
+ 	 -->	
+ </select>
+
+ </mapper>
+ 
+ 

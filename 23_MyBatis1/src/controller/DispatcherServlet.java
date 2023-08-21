@@ -1,4 +1,4 @@
-package member.controller;
+package controller;
 
 import java.io.IOException;
 import java.util.Arrays;
