@@ -12,6 +12,7 @@ import servlet.model.vo.MemberDTO;
 
 public class MemberRepository implements MemberDAOTemplate {
 	//DAO랑 명칭차이지 틀린게 없음 시험때문에 하는것
+	//상호작용을 중재하는 역할을 하기때문에 DAO랑 달리 드라이버로딩은 넣지 않음
 
 		@Override
 		public Connection getConnection() throws SQLException {
