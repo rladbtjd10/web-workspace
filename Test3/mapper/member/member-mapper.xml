@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="MemberMapper">
+<resultMap type="Member" id="MemberMap">
+<id property="UserNo" column="User_No" />
+<result property="UserId" column="User_Id" />
+<result property="UserPw" column="User_Pw" />
+<result property="UserName" column="User_Name" />
+<result property="UserAddr" column="User_Addr" />
+<result property="RegDate" column="Reg_Date" />
+</resultMap>
+</mapper>

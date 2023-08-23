@@ -8,11 +8,7 @@ JSP Element
 <%@ page import="servlet.model.MemberVO" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<% 
-String name = request.getParameter("name");
-//List<MemberVO> list  = (List) application.getAttribute("list");
-List<MemberVO> list  = (List) request.getAttribute("list");
-%>    
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,6 +36,11 @@ List<MemberVO> list  = (List) request.getAttribute("list");
 				<th>나이</th>
 				<th>주소</th>
 			</tr>
+			<%
+			//String name = request.getParameter("name");
+			//List<MemberVO> list  = (List) application.getAttribute("list");
+			List<MemberVO> list = (List) request.getAttribute("list");
+			%>
 			<%
 			if(list!=null){
 			for(int i=0; i<list.size(); i++) { %>
