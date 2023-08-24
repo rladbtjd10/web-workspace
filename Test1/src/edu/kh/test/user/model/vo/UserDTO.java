@@ -7,15 +7,6 @@ public class UserDTO {
 	private String name;
 	private int age;
 	
-	public UserDTO() {}
-	
-	public UserDTO(int no, String id, String name, int age) {
-		this.no = no;
-		this.id = id;
-		this.name = name;
-		this.age = age;
-	}
-	
 	public int getNo() {
 		return no;
 	}
@@ -40,10 +31,7 @@ public class UserDTO {
 	public void setAge(int age) {
 		this.age = age;
 	}
-	@Override
-	public String toString() {
-		return "UserDTO [no=" + no + ", id=" + id + ", name=" + name + ", age=" + age + "]";
-	}
+	
 	
 	
 
