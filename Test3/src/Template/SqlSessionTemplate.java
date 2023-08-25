@@ -7,19 +7,19 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.apache.ibatis.session.SqlSessionManager;
 
 public class SqlSessionTemplate {
-
+	
 	public static SqlSession getSqlSession() {
-		SqlSession session = null;
 		
+		SqlSession session = null;
 		// 해당 리소스 경로(xml파일) 작성
-		String resource = "mybatis-config.xml";
+		String resource = "mybatis.config.xml";
 		try {
 			
 			InputStream stream = Resources.getResourceAsStream(resource);
-			
-			SqlSessionFactoryBuilder builder= new SqlSessionFactoryBuilder();
+			SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
 			SqlSessionFactory factory = builder.build(stream);
 			
 			session = factory.openSession(false);
